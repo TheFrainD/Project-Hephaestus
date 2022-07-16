@@ -1,0 +1,1087 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/characters/player/Player.tscn" type="PackedScene" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="BoxShape" id=2]
+
+[sub_resource type="Environment" id=3]
+ambient_light_color = Color( 0.647059, 0.882353, 0.964706, 1 )
+ambient_light_energy = 0.71
+ss_reflections_enabled = true
+ssao_enabled = true
+dof_blur_far_distance = 21.61
+glow_enabled = true
+glow_intensity = 1.55
+glow_bicubic_upscale = true
+glow_high_quality = true
+
+[node name="Level1" type="Spatial"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4 )
+
+[node name="Level" type="Spatial" parent="."]
+
+[node name="Row" type="Spatial" parent="Level"]
+
+[node name="Unit" type="StaticBody" parent="Level/Row"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Level2" type="Spatial" parent="Level/Row"]
+
+[node name="Row" type="Spatial" parent="Level/Row/Level2"]
+
+[node name="Unit" type="StaticBody" parent="Level/Row/Level2/Row"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row/Level2/Row/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row/Level2/Row/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row/Level2/Row/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row/Level2/Row/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row/Level2/Row/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row/Level2/Row/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row/Level2/Row/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row/Level2/Row/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row/Level2/Row/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row/Level2/Row/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Row2" type="Spatial" parent="Level"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
+
+[node name="Unit" type="StaticBody" parent="Level/Row2"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row2/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row2/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row2/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row2/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row2/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row2/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row2/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row2/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row2/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row2/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Level2" type="Spatial" parent="Level/Row2"]
+
+[node name="Row" type="Spatial" parent="Level/Row2/Level2"]
+
+[node name="Unit" type="StaticBody" parent="Level/Row2/Level2/Row"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row2/Level2/Row/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row2/Level2/Row/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row2/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row2/Level2/Row/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row2/Level2/Row/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row2/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row2/Level2/Row/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row2/Level2/Row/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row2/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row2/Level2/Row/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row2/Level2/Row/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row2/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row2/Level2/Row/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row2/Level2/Row/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Row3" type="Spatial" parent="Level"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0 )
+
+[node name="Unit" type="StaticBody" parent="Level/Row3"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row3/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row3/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row3/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row3/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row3/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row3/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row3/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row3/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row3/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row3/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Level2" type="Spatial" parent="Level/Row3"]
+
+[node name="Row" type="Spatial" parent="Level/Row3/Level2"]
+
+[node name="Unit" type="StaticBody" parent="Level/Row3/Level2/Row"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row3/Level2/Row/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row3/Level2/Row/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row3/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row3/Level2/Row/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row3/Level2/Row/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row3/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row3/Level2/Row/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row3/Level2/Row/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row3/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row3/Level2/Row/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row3/Level2/Row/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row3/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row3/Level2/Row/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row3/Level2/Row/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Row4" type="Spatial" parent="Level"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0 )
+
+[node name="Unit" type="StaticBody" parent="Level/Row4"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row4/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row4/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row4/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row4/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row4/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row4/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row4/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row4/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row4/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row4/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Level2" type="Spatial" parent="Level/Row4"]
+
+[node name="Row" type="Spatial" parent="Level/Row4/Level2"]
+
+[node name="Unit" type="StaticBody" parent="Level/Row4/Level2/Row"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row4/Level2/Row/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row4/Level2/Row/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row4/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row4/Level2/Row/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row4/Level2/Row/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row4/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row4/Level2/Row/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row4/Level2/Row/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row4/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row4/Level2/Row/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row4/Level2/Row/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row4/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row4/Level2/Row/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row4/Level2/Row/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Row5" type="Spatial" parent="Level"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0 )
+
+[node name="Unit" type="StaticBody" parent="Level/Row5"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row5/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row5/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row5/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row5/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row5/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row5/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row5/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row5/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row5/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row5/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Level2" type="Spatial" parent="Level/Row5"]
+
+[node name="Row" type="Spatial" parent="Level/Row5/Level2"]
+
+[node name="Unit" type="StaticBody" parent="Level/Row5/Level2/Row"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row5/Level2/Row/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row5/Level2/Row/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row5/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row5/Level2/Row/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row5/Level2/Row/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row5/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row5/Level2/Row/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row5/Level2/Row/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row5/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row5/Level2/Row/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row5/Level2/Row/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row5/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row5/Level2/Row/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row5/Level2/Row/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Row6" type="Spatial" parent="Level"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0 )
+
+[node name="Unit" type="StaticBody" parent="Level/Row6"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row6/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row6/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row6/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row6/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row6/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row6/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row6/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row6/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row6/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row6/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Level2" type="Spatial" parent="Level/Row6"]
+
+[node name="Row" type="Spatial" parent="Level/Row6/Level2"]
+
+[node name="Unit" type="StaticBody" parent="Level/Row6/Level2/Row"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row6/Level2/Row/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row6/Level2/Row/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row6/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row6/Level2/Row/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row6/Level2/Row/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row6/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row6/Level2/Row/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row6/Level2/Row/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row6/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row6/Level2/Row/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row6/Level2/Row/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row6/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row6/Level2/Row/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row6/Level2/Row/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Row7" type="Spatial" parent="Level"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0 )
+
+[node name="Unit" type="StaticBody" parent="Level/Row7"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row7/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row7/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row7/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row7/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row7/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row7/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row7/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row7/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row7/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row7/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Level2" type="Spatial" parent="Level/Row7"]
+
+[node name="Row" type="Spatial" parent="Level/Row7/Level2"]
+
+[node name="Unit" type="StaticBody" parent="Level/Row7/Level2/Row"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row7/Level2/Row/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row7/Level2/Row/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row7/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row7/Level2/Row/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row7/Level2/Row/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row7/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row7/Level2/Row/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row7/Level2/Row/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row7/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row7/Level2/Row/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row7/Level2/Row/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row7/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row7/Level2/Row/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row7/Level2/Row/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Row8" type="Spatial" parent="Level"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0 )
+
+[node name="Unit" type="StaticBody" parent="Level/Row8"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row8/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row8/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row8/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row8/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row8/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row8/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row8/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row8/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row8/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row8/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Level2" type="Spatial" parent="Level/Row8"]
+
+[node name="Row" type="Spatial" parent="Level/Row8/Level2"]
+
+[node name="Unit" type="StaticBody" parent="Level/Row8/Level2/Row"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row8/Level2/Row/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row8/Level2/Row/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row8/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row8/Level2/Row/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row8/Level2/Row/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row8/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row8/Level2/Row/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row8/Level2/Row/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row8/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row8/Level2/Row/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row8/Level2/Row/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row8/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row8/Level2/Row/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row8/Level2/Row/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Row9" type="Spatial" parent="Level"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0 )
+
+[node name="Unit" type="StaticBody" parent="Level/Row9"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row9/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row9/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row9/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row9/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row9/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row9/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row9/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row9/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row9/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row9/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Level2" type="Spatial" parent="Level/Row9"]
+
+[node name="Row" type="Spatial" parent="Level/Row9/Level2"]
+
+[node name="Unit" type="StaticBody" parent="Level/Row9/Level2/Row"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row9/Level2/Row/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row9/Level2/Row/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row9/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row9/Level2/Row/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row9/Level2/Row/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row9/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row9/Level2/Row/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row9/Level2/Row/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row9/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row9/Level2/Row/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row9/Level2/Row/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row9/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row9/Level2/Row/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row9/Level2/Row/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Row10" type="Spatial" parent="Level"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0 )
+
+[node name="Unit" type="StaticBody" parent="Level/Row10"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row10/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row10/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row10/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row10/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row10/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row10/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row10/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row10/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row10/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row10/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Level2" type="Spatial" parent="Level/Row10"]
+
+[node name="Row" type="Spatial" parent="Level/Row10/Level2"]
+
+[node name="Unit" type="StaticBody" parent="Level/Row10/Level2/Row"]
+
+[node name="Model" type="MeshInstance" parent="Level/Row10/Level2/Row/Unit"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row10/Level2/Row/Unit"]
+shape = SubResource( 2 )
+
+[node name="Unit2" type="StaticBody" parent="Level/Row10/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row10/Level2/Row/Unit2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row10/Level2/Row/Unit2"]
+shape = SubResource( 2 )
+
+[node name="Unit3" type="StaticBody" parent="Level/Row10/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row10/Level2/Row/Unit3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row10/Level2/Row/Unit3"]
+shape = SubResource( 2 )
+
+[node name="Unit4" type="StaticBody" parent="Level/Row10/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row10/Level2/Row/Unit4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row10/Level2/Row/Unit4"]
+shape = SubResource( 2 )
+
+[node name="Unit5" type="StaticBody" parent="Level/Row10/Level2/Row"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="Model" type="MeshInstance" parent="Level/Row10/Level2/Row/Unit5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Row10/Level2/Row/Unit5"]
+shape = SubResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -1, -6.18172e-08, 6.18172e-08, 0, 0.707107, 0.707107, -8.74228e-08, 0.707107, -0.707107, -8, 16, -14 )
+current = true
+fov = 30.0
+size = 20.0
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.0159591, -0.65486, 0.755582, -0.0138286, 0.755751, 0.654714, -0.999777, -9.31115e-10, -0.0211169, 0, 9.61708, 3.95747 )
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
