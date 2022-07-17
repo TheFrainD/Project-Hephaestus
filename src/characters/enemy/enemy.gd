@@ -1,17 +1,20 @@
 extends KinematicBody
 
+class_name Enemy
+
 export var speed = 4.0
 export var gravity = 90.0
+export var max_health = 3
+export (Global.damage_type) var vulnerability = Global.damage_type.FIRE
 
 onready var tween = $Tween
 onready var model = $Pivot/Model
 
 var _velocity = Vector3.ZERO
 
+onready var _health = max_health setget set_health
+
 func _physics_process(delta):
-	if Input.is_action_just_pressed("attack"):
-		move(Vector3.RIGHT)
-	
 	_velocity.y -= gravity * delta
 	_velocity = move_and_slide(_velocity, Vector3.UP)
 
@@ -42,3 +45,21 @@ func move(direction):
 			1 / speed, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
 	tween.start()
 	yield(tween, "tween_all_completed")
+
+
+func _on_hurtbox_area_entered(area):
+	if area.type == vulnerability:
+		self._health = 0
+	else:
+		self._health -= 1
+
+
+func set_health(value):
+	_health = value
+	if _health <= 0:
+		die()
+
+
+func die():
+	Events.emit_signal("enemy_died")
+	queue_free()

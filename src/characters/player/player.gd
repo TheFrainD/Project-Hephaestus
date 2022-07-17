@@ -1,7 +1,11 @@
 extends KinematicBody
 
+signal attack_finished
+
 export var speed = 4.0
 export var gravity = 90.0
+
+export (PackedScene) var hepheastus
 
 onready var pivot = $Pivot
 onready var model = $Pivot/Model
@@ -20,26 +24,23 @@ func make_turn():
 	
 	if is_on_floor():
 		if Input.is_action_pressed("roll_left"):
-			_roll(Vector3.RIGHT)
-			made_turn = true
+			made_turn = _roll(Vector3.RIGHT)
 		elif Input.is_action_pressed("roll_right"):
-			_roll(Vector3.LEFT)
-			made_turn = true
+			made_turn = _roll(Vector3.LEFT)
 		elif Input.is_action_pressed("roll_up"):
-			_roll(Vector3.BACK)
-			made_turn = true
+			made_turn = _roll(Vector3.BACK)
 		elif Input.is_action_pressed("roll_down"):
-			_roll(Vector3.FORWARD)
-			made_turn = true
+			made_turn = _roll(Vector3.FORWARD)
 		elif Input.is_action_just_pressed("attack"):
-			_attack()
+			made_turn = _attack()
+			yield(self, "attack_finished")
 	
 	return made_turn
 
 
 func _roll(direction):
 	if tween.is_active():
-		return
+		return false
 	
 	var detection_range = 2.5
 	var space = get_world().direct_space_state
@@ -54,7 +55,7 @@ func _roll(direction):
 	collision = collision or space.intersect_ray(model.global_transform.origin,
 			model.global_transform.origin + direction * detection_range + Vector3.DOWN * 0.4, [self])
 	if collision:
-		return
+		return false
 	
 	if direction.x != 0:
 		Events.emit_signal("player_moved", direction.x)
@@ -78,17 +79,25 @@ func _roll(direction):
 	pivot.transform = Transform.IDENTITY
 	model.transform.origin = Vector3(0, 1, 0)
 	model.global_transform.basis = preserved_basis
+	
+	return true
 
 
 func _attack():
 	if _current_face == 1:
-		pass
+		var hepheastus_instance = hepheastus.instance()
+		add_child(hepheastus_instance)
+		hepheastus_instance.translate(Vector3.UP * 1.6)
+		
+		return true
 	elif _current_face == 3:
-		pass
+		return true
 	elif _current_face == 6:
-		pass
+		return true
 	else:
-		return
+		return false
+	
+	emit_signal("attack_finished")
 
 
 func _on_tween_step(object, key, elapsed, value):

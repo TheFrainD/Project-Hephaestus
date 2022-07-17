@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/characters/enemy/enemy.gd" type="Script" id=1]
 
@@ -9,10 +9,14 @@ bottom_radius = 0.5
 [sub_resource type="CylinderShape" id=2]
 radius = 0.5
 
+[sub_resource type="CylinderShape" id=3]
+radius = 0.545767
+
 [node name="Enemy" type="KinematicBody" groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource( 1 )
+vulnerability = 1
 
 [node name="Pivot" type="Spatial" parent="."]
 
@@ -26,3 +30,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Hurtbox" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape" type="CollisionShape" parent="Hurtbox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01198, 0 )
+shape = SubResource( 3 )
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

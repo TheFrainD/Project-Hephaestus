@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/characters/player/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/models/Cube.fbx" type="PackedScene" id=2]
+[ext_resource path="res://src/characters/figures/Hepheastus.tscn" type="PackedScene" id=3]
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.7, 0.08, 0.7 )
@@ -15,10 +16,14 @@ extents = Vector3( 0.8, 0.8, 0.8 )
 [sub_resource type="BoxShape" id=6]
 extents = Vector3( 0.622837, 0.0644741, 0.647225 )
 
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.7, 0.6, 0.7 )
+
 [node name="Player" type="KinematicBody" groups=["Player"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.598976, 0 )
 collision_mask = 6
 script = ExtResource( 1 )
+hepheastus = ExtResource( 3 )
 
 [node name="Pivot" type="Spatial" parent="."]
 
@@ -93,6 +98,14 @@ collision_mask = 8
 
 [node name="CollisionShape" type="CollisionShape" parent="FaceDetector"]
 shape = SubResource( 6 )
+
+[node name="Hurtbox" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape" type="CollisionShape" parent="Hurtbox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841504, 0 )
+shape = SubResource( 7 )
 
 [connection signal="tween_step" from="Tween" to="." method="_on_tween_step"]
 [connection signal="area_entered" from="FaceDetector" to="." method="_on_face_detector_entered"]
