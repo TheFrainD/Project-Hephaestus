@@ -16,6 +16,11 @@ func _physics_process(delta):
 	_velocity = move_and_slide(_velocity, Vector3.UP)
 
 
+func make_turn():
+	move(Vector3.RIGHT)
+	return true
+
+
 func move(direction):
 	var detection_range = 2.5
 	var space = get_world().direct_space_state

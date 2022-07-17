@@ -30,6 +30,10 @@ config/name="Project Hephaestus"
 run/main_scene="res://src/scenes/Level1.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Events="*res://src/autoloads/events.gd"
+
 [display]
 
 window/size/width=1280

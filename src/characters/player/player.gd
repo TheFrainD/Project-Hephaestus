@@ -11,22 +11,33 @@ var _velocity = Vector3.ZERO
 var _current_face = 5
 
 func _physics_process(delta):
-	
-	if is_on_floor():
-		if Input.is_action_pressed("roll_left"):
-			roll(Vector3.RIGHT)
-		elif Input.is_action_pressed("roll_right"):
-			roll(Vector3.LEFT)
-		elif Input.is_action_pressed("roll_up"):
-			roll(Vector3.BACK)
-		elif Input.is_action_pressed("roll_down"):
-			roll(Vector3.FORWARD)
-	
 	_velocity.y -= gravity * delta 
 	_velocity = move_and_slide(_velocity, Vector3.UP)
 
 
-func roll(direction):
+func make_turn():
+	var made_turn = false
+	
+	if is_on_floor():
+		if Input.is_action_pressed("roll_left"):
+			_roll(Vector3.RIGHT)
+			made_turn = true
+		elif Input.is_action_pressed("roll_right"):
+			_roll(Vector3.LEFT)
+			made_turn = true
+		elif Input.is_action_pressed("roll_up"):
+			_roll(Vector3.BACK)
+			made_turn = true
+		elif Input.is_action_pressed("roll_down"):
+			_roll(Vector3.FORWARD)
+			made_turn = true
+		elif Input.is_action_just_pressed("attack"):
+			_attack()
+	
+	return made_turn
+
+
+func _roll(direction):
 	if tween.is_active():
 		return
 	
@@ -44,6 +55,9 @@ func roll(direction):
 			model.global_transform.origin + direction * detection_range + Vector3.DOWN * 0.4, [self])
 	if collision:
 		return
+	
+	if direction.x != 0:
+		Events.emit_signal("player_moved", direction.x)
 	
 	pivot.translate(direction * 0.8)
 	model.global_translate(-direction * 0.8)
@@ -64,6 +78,17 @@ func roll(direction):
 	pivot.transform = Transform.IDENTITY
 	model.transform.origin = Vector3(0, 1, 0)
 	model.global_transform.basis = preserved_basis
+
+
+func _attack():
+	if _current_face == 1:
+		pass
+	elif _current_face == 3:
+		pass
+	elif _current_face == 6:
+		pass
+	else:
+		return
 
 
 func _on_tween_step(object, key, elapsed, value):
