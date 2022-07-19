@@ -1,13 +1,36 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/characters/figures/PointArrow.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Objects/arrow.fbx" type="PackedScene" id=2]
 [ext_resource path="res://assets/Objects/Arthemida.fbx" type="PackedScene" id=3]
 [ext_resource path="res://src/characters/figures/hitbox.gd" type="Script" id=4]
 [ext_resource path="res://src/characters/figures/artemida.gd" type="Script" id=5]
+[ext_resource path="res://assets/Particles/star_09.png" type="Texture" id=6]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.121886, 0.080214, 1.02771 )
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 1
+emission_sphere_radius = 0.5
+gravity = Vector3( 0, 0, -9.8 )
+scale = 1.5
+color = Color( 0.360784, 1, 0, 1 )
+hue_variation = 0.07
+hue_variation_random = 1.0
+
+[sub_resource type="QuadMesh" id=6]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -128,6 +151,14 @@ script = ExtResource( 4 )
 [node name="CollisionShape" type="CollisionShape" parent="Arrow/PlayerHitbox"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00751019, 0.155088, 0.602481 )
 shape = SubResource( 1 )
+
+[node name="Particles" type="Particles" parent="Arrow"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.228713, 0, 0.144678 )
+material_override = SubResource( 4 )
+amount = 16
+visibility_aabb = AABB( -3.91064, -4, -4, 8, 8, 8 )
+process_material = SubResource( 5 )
+draw_pass_1 = SubResource( 6 )
 
 [node name="Arrows" type="Spatial" parent="."]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0 )

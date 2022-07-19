@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Objects/Zeus.fbx" type="PackedScene" id=1]
 [ext_resource path="res://assets/Objects/Bolt.fbx" type="PackedScene" id=2]
 [ext_resource path="res://src/characters/figures/hitbox.gd" type="Script" id=3]
 [ext_resource path="res://src/characters/figures/zeus.gd" type="Script" id=4]
 [ext_resource path="res://src/characters/figures/PointArrow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Particles/spark_03.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -30,7 +31,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Bolt:translation")
@@ -101,6 +102,28 @@ tracks/3/keys = {
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.196435, 0.157384, 1.24868 )
 
+[sub_resource type="SpatialMaterial" id=5]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3( 0, 0, 9.8 )
+angle = 360.0
+angle_random = 1.0
+scale = 2.0
+color = Color( 0.964706, 0.980392, 0.258824, 1 )
+
+[sub_resource type="QuadMesh" id=7]
+
 [node name="Zeus" type="Spatial"]
 script = ExtResource( 4 )
 
@@ -119,6 +142,7 @@ anims/appearing = SubResource( 2 )
 
 [node name="Bolt" type="Spatial" parent="."]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+visible = false
 
 [node name="Pivot" type="Spatial" parent="Bolt"]
 transform = Transform( 0.152688, 0.318697, 0.353721, -0.431509, 0.249614, -0.0386323, -0.201212, -0.293471, 0.351267, 0, 0, -0.214424 )
@@ -135,6 +159,15 @@ type = 1
 [node name="CollisionShape" type="CollisionShape" parent="Bolt/PlayerHitbox"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0506766, 0.106256, 0 )
 shape = SubResource( 4 )
+
+[node name="Particles" type="Particles" parent="Bolt"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0203058, 0, -0.347184 )
+material_override = SubResource( 5 )
+amount = 20
+lifetime = 0.49
+visibility_aabb = AABB( -0.743971, -0.520863, -1.28524, 1.20083, 1.04173, 2.57049 )
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 7 )
 
 [node name="Arrows" type="Spatial" parent="."]
 
