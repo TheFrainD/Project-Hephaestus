@@ -1,0 +1,154 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/characters/figures/PointArrow.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Objects/arrow.fbx" type="PackedScene" id=2]
+[ext_resource path="res://assets/Objects/Arthemida.fbx" type="PackedScene" id=3]
+[ext_resource path="res://src/characters/figures/hitbox.gd" type="Script" id=4]
+[ext_resource path="res://src/characters/figures/artemida.gd" type="Script" id=5]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.121886, 0.080214, 1.02771 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Arrow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Arrow:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "appearing"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Arrow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Arrow:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -10, 0, 10 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="Artemida" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="Pivot" type="Spatial" parent="."]
+transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+
+[node name="Model" parent="Pivot" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8352, -0.783707, -0.738835 )
+
+[node name="Arrow" type="Spatial" parent="."]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0 )
+visible = false
+
+[node name="Pivot" type="Spatial" parent="Arrow"]
+transform = Transform( 0.995697, -0.011951, -0.0918921, 0, 0.991649, -0.128969, 0.092666, 0.128414, 0.987382, 0.145824, 0, 0 )
+
+[node name="Model" parent="Arrow/Pivot" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0377, -2.15991, -0.774316 )
+
+[node name="PlayerHitbox" type="Area" parent="Arrow"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Arrow/PlayerHitbox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00751019, 0.155088, 0.602481 )
+shape = SubResource( 1 )
+
+[node name="Arrows" type="Spatial" parent="."]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0 )
+
+[node name="Forward" parent="Arrows" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 0, 0 )
+
+[node name="Back" parent="Arrows" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0, 0 )
+
+[node name="Left" parent="Arrows" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5 )
+
+[node name="Right" parent="Arrows" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 0, -2.5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/appearing = SubResource( 3 )
+
+[connection signal="input_event" from="Arrows/Forward" to="." method="_on_forward_arrow_input_event"]
+[connection signal="input_event" from="Arrows/Back" to="." method="_on_back_arrow_input_event"]
+[connection signal="input_event" from="Arrows/Left" to="." method="_on_left_arrow_input_event"]
+[connection signal="input_event" from="Arrows/Right" to="." method="_on_right_arrow_input_event"]

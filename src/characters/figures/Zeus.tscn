@@ -1,0 +1,156 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/Objects/Zeus.fbx" type="PackedScene" id=1]
+[ext_resource path="res://assets/Objects/Bolt.fbx" type="PackedScene" id=2]
+[ext_resource path="res://src/characters/figures/hitbox.gd" type="Script" id=3]
+[ext_resource path="res://src/characters/figures/zeus.gd" type="Script" id=4]
+[ext_resource path="res://src/characters/figures/PointArrow.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bolt:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Bolt:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "appearing"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Bolt:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Bolt:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -20, 0, 0 ) ]
+}
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.196435, 0.157384, 1.24868 )
+
+[node name="Zeus" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="Pivot" type="Spatial" parent="."]
+transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+
+[node name="Zeus" parent="Pivot" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0727, -0.688799, -4.11421 )
+
+[node name="Bolt" parent="Pivot" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0727, -0.688799, -4.11421 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/appearing = SubResource( 2 )
+
+[node name="Bolt" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="Pivot" type="Spatial" parent="Bolt"]
+transform = Transform( 0.152688, 0.318697, 0.353721, -0.431509, 0.249614, -0.0386323, -0.201212, -0.293471, 0.351267, 0, 0, -0.214424 )
+
+[node name="Model" parent="Bolt/Pivot" instance=ExtResource( 2 )]
+transform = Transform( 0.999936, 0, 0.0113793, 2.08616e-07, 1, 2.38419e-07, -0.0113794, -1.49012e-07, 0.999936, 19.287, -3.05548, -5.77246 )
+
+[node name="PlayerHitbox" type="Area" parent="Bolt"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource( 3 )
+type = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="Bolt/PlayerHitbox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0506766, 0.106256, 0 )
+shape = SubResource( 4 )
+
+[node name="Arrows" type="Spatial" parent="."]
+
+[node name="Forward" parent="Arrows" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 0, 0 )
+
+[node name="Back" parent="Arrows" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0, 0 )
+
+[node name="Left" parent="Arrows" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5 )
+
+[node name="Right" parent="Arrows" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -2.5 )
+
+[connection signal="input_event" from="Arrows/Forward" to="." method="_on_forward_arrow_input_event"]
+[connection signal="input_event" from="Arrows/Back" to="." method="_on_back_arrow_input_event"]
+[connection signal="input_event" from="Arrows/Left" to="." method="_on_left_arrow_input_event"]
+[connection signal="input_event" from="Arrows/Right" to="." method="_on_right_arrow_input_event"]

@@ -1,6 +1,6 @@
 extends Node
 
-var _player = null
+var _player: Player = null
 var _enemies = []
 var _enemies_count = 0
 var _player_active = true
@@ -10,15 +10,19 @@ onready var timer = $Timer
 func _ready():
 	_update_children()
 	Events.connect("enemy_died", self, "_update_children")
+	Events.connect("player_made_turn", self, "_on_player_made_turn")
 
 func _process(delta):
 	_make_turn()
 
 
 func _make_turn():
-	if _player_active and _player.make_turn():
-		_player_active = false
-		timer.start()
+	if _player.active:
+		_player.make_turn()
+
+
+func _on_player_made_turn():
+	timer.start()
 
 
 func _update_children():
@@ -40,4 +44,4 @@ func _on_timeout():
 		if enemy and weakref(enemy).get_ref():
 			enemy.make_turn()
 	
-	_player_active = true
+	_player.active = true

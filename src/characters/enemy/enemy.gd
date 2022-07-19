@@ -27,16 +27,16 @@ func make_turn():
 func move(direction):
 	var detection_range = 2.5
 	var space = get_world().direct_space_state
-	var collision = space.intersect_ray(model.global_transform.origin,
-			model.global_transform.origin + direction * detection_range, [self])
-	collision = collision or space.intersect_ray(model.global_transform.origin,
-			model.global_transform.origin + direction * detection_range + Vector3.UP * 0.75, [self])
-	collision = collision or space.intersect_ray(model.global_transform.origin,
-			model.global_transform.origin + direction * detection_range + Vector3.UP * 0.4, [self])
-	collision = collision or space.intersect_ray(model.global_transform.origin,
-			model.global_transform.origin + direction * detection_range + Vector3.DOWN * 0.65, [self])
-	collision = collision or space.intersect_ray(model.global_transform.origin,
-			model.global_transform.origin + direction * detection_range + Vector3.DOWN * 0.4, [self])
+	var collision = space.intersect_ray(global_transform.origin,
+			global_transform.origin + direction * detection_range, [self])
+	collision = collision or space.intersect_ray(global_transform.origin,
+			global_transform.origin + direction * detection_range + Vector3.UP * 0.75, [self])
+	collision = collision or space.intersect_ray(global_transform.origin,
+			global_transform.origin + direction * detection_range + Vector3.UP * 0.4, [self])
+	collision = collision or space.intersect_ray(global_transform.origin,
+			global_transform.origin + direction * detection_range + Vector3.DOWN * 0.6, [self])
+	collision = collision or space.intersect_ray(global_transform.origin,
+			global_transform.origin + direction * detection_range + Vector3.DOWN * 0.4, [self])
 	if collision:
 		return
 	

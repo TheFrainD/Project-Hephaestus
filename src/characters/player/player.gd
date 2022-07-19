@@ -1,15 +1,22 @@
 extends KinematicBody
 
+class_name Player
+
 signal attack_finished
+signal made_turn
 
 export var speed = 4.0
 export var gravity = 90.0
 
 export (PackedScene) var hepheastus
+export (PackedScene) var zeus
+export (PackedScene) var artemida
 
 onready var pivot = $Pivot
 onready var model = $Pivot/Model
 onready var tween = $Tween
+
+var active = true
 
 var _velocity = Vector3.ZERO
 var _current_face = 5
@@ -20,22 +27,17 @@ func _physics_process(delta):
 
 
 func make_turn():
-	var made_turn = false
-	
-	if is_on_floor():
+	if active and is_on_floor():
 		if Input.is_action_pressed("roll_left"):
-			made_turn = _roll(Vector3.RIGHT)
+			_roll(Vector3.RIGHT)
 		elif Input.is_action_pressed("roll_right"):
-			made_turn = _roll(Vector3.LEFT)
+			_roll(Vector3.LEFT)
 		elif Input.is_action_pressed("roll_up"):
-			made_turn = _roll(Vector3.BACK)
+			_roll(Vector3.BACK)
 		elif Input.is_action_pressed("roll_down"):
-			made_turn = _roll(Vector3.FORWARD)
+			_roll(Vector3.FORWARD)
 		elif Input.is_action_just_pressed("attack"):
-			made_turn = _attack()
-			yield(self, "attack_finished")
-	
-	return made_turn
+			_attack()
 
 
 func _roll(direction):
@@ -56,6 +58,8 @@ func _roll(direction):
 			model.global_transform.origin + direction * detection_range + Vector3.DOWN * 0.4, [self])
 	if collision:
 		return false
+	
+	active = false
 	
 	if direction.x != 0:
 		Events.emit_signal("player_moved", direction.x)
@@ -80,20 +84,27 @@ func _roll(direction):
 	model.transform.origin = Vector3(0, 1, 0)
 	model.global_transform.basis = preserved_basis
 	
-	return true
+	Events.emit_signal("player_made_turn")
 
 
 func _attack():
 	if _current_face == 1:
+		active = false
 		var hepheastus_instance = hepheastus.instance()
 		add_child(hepheastus_instance)
 		hepheastus_instance.translate(Vector3.UP * 1.6)
 		
-		return true
+		Events.emit_signal("player_made_turn")
 	elif _current_face == 3:
-		return true
+		active = false
+		var zeus_instance = zeus.instance()
+		get_tree().get_root().add_child(zeus_instance)
+		zeus_instance.translate(global_transform.origin + Vector3.UP * 1.6)
 	elif _current_face == 6:
-		return true
+		active = false
+		var artemida_instance = artemida.instance()
+		get_tree().get_root().add_child(artemida_instance)
+		artemida_instance.translate(global_transform.origin + Vector3.UP * 1.6)
 	else:
 		return false
 	

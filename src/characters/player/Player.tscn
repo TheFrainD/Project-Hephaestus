@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/characters/player/player.gd" type="Script" id=1]
-[ext_resource path="res://assets/models/Cube.fbx" type="PackedScene" id=2]
+[ext_resource path="res://assets/Objects/Cube.fbx" type="PackedScene" id=2]
 [ext_resource path="res://src/characters/figures/Hepheastus.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/characters/figures/Zeus.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/characters/figures/Artemida.tscn" type="PackedScene" id=5]
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.7, 0.08, 0.7 )
@@ -24,6 +26,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.598976, 0 )
 collision_mask = 6
 script = ExtResource( 1 )
 hepheastus = ExtResource( 3 )
+zeus = ExtResource( 4 )
+artemida = ExtResource( 5 )
 
 [node name="Pivot" type="Spatial" parent="."]
 
@@ -31,48 +35,48 @@ hepheastus = ExtResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
 
 [node name="Cube" parent="Pivot/Model" instance=ExtResource( 2 )]
-transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.0140323, 0.0475841 )
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 16.569, 0, 6.693 )
+
+[node name="One" type="Area" parent="Pivot/Model"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.820581, 0 )
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Pivot/Model/One"]
+shape = SubResource( 4 )
 
 [node name="Six" type="Area" parent="Pivot/Model"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.820581, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.901958, 0 )
 collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="Pivot/Model/Six"]
 shape = SubResource( 4 )
 
-[node name="Five" type="Area" parent="Pivot/Model"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.901958, 0 )
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape" type="CollisionShape" parent="Pivot/Model/Five"]
-shape = SubResource( 4 )
-
-[node name="One" type="Area" parent="Pivot/Model"]
+[node name="Two" type="Area" parent="Pivot/Model"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.688844, 0.820515, 0 )
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape" type="CollisionShape" parent="Pivot/Model/One"]
+[node name="CollisionShape" type="CollisionShape" parent="Pivot/Model/Two"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0866933, -0.725032, 0 )
 shape = SubResource( 5 )
 
-[node name="Four" type="Area" parent="Pivot/Model"]
+[node name="Five" type="Area" parent="Pivot/Model"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.889345, 0.86106, 0 )
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape" type="CollisionShape" parent="Pivot/Model/Four"]
+[node name="CollisionShape" type="CollisionShape" parent="Pivot/Model/Five"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0866933, -0.725032, 0 )
 shape = SubResource( 5 )
 
-[node name="Two" type="Area" parent="Pivot/Model"]
+[node name="Four" type="Area" parent="Pivot/Model"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0265084, 0.842948, 0.925152 )
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape" type="CollisionShape" parent="Pivot/Model/Two"]
+[node name="CollisionShape" type="CollisionShape" parent="Pivot/Model/Four"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0866933, -0.725032, 0 )
 shape = SubResource( 5 )
 
