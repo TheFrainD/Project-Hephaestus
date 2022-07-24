@@ -1,23 +1,26 @@
 extends Camera
 
 export (NodePath) var player_path
-export var smoothing = 2.0
+export var smoothing = 4.0
 export var offset = Vector3.ZERO
+export var x_fixed = false
+export var y_fixed = false
+export var z_fixed = false
 
 onready var player = get_node(player_path)
-onready var tween = $Tween
-
-func _ready():
-	Events.connect("player_moved", self, "_on_player_moved")
-	global_transform.origin.x = player.global_transform.origin.x
+onready var target = player.global_transform.origin
+onready var start_position = global_transform.origin
 
 
-func _on_player_moved(direction):
-	if not player:
-		return
+func _physics_process(delta):
+	target = player.global_transform.origin + offset
 	
-	tween.interpolate_property(self, "translation:x",
-			global_transform.origin.x, global_transform.origin.x + direction * 2.0, 
-			1 / smoothing, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
-	yield(tween, "tween_all_completed")
+	if global_transform.origin.distance_to(target) >= 0.1:
+		global_transform.origin = global_transform.origin.linear_interpolate(target, delta * smoothing)
+		
+		if x_fixed:
+			global_transform.origin.x = start_position.x
+		if y_fixed:
+			global_transform.origin.y = start_position.y
+		if z_fixed:
+			global_transform.origin.z = start_position.z

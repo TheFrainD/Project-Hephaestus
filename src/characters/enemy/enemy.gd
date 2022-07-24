@@ -36,7 +36,7 @@ func move(direction):
 	collision = collision or space.intersect_ray(global_transform.origin,
 			global_transform.origin + direction * detection_range + Vector3.DOWN * 0.6, [self])
 	collision = collision or space.intersect_ray(global_transform.origin,
-			global_transform.origin + direction * detection_range + Vector3.DOWN * 0.4, [self])
+			global_transform.origin + direction * detection_range + Vector3.DOWN * 0.45, [self])
 	if collision:
 		return
 	

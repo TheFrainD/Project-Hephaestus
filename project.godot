@@ -101,6 +101,7 @@ attack={
 3d_physics/layer_4="Dice Face"
 3d_physics/layer_5="Enemy Hitbox"
 3d_physics/layer_6="Player Hitbox"
+3d_physics/layer_7="UI"
 
 [physics]
 

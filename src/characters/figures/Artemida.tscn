@@ -26,8 +26,8 @@ emission_shape = 1
 emission_sphere_radius = 0.5
 gravity = Vector3( 0, 0, -9.8 )
 scale = 1.5
-color = Color( 0.360784, 1, 0, 1 )
-hue_variation = 0.07
+color = Color( 0, 0.0470588, 1, 1 )
+hue_variation = 0.02
 hue_variation_random = 1.0
 
 [sub_resource type="QuadMesh" id=6]
@@ -153,7 +153,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00751019, 0.155088, 0.602481
 shape = SubResource( 1 )
 
 [node name="Particles" type="Particles" parent="Arrow"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.228713, 0, 0.144678 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.228713, -2.38419e-07, 0.144677 )
 material_override = SubResource( 4 )
 amount = 16
 visibility_aabb = AABB( -3.91064, -4, -4, 8, 8, 8 )

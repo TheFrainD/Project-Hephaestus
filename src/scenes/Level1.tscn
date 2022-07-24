@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/characters/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/objects/1kr.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://src/main/camera_controller.gd" type="Script" id=4]
 [ext_resource path="res://src/main/turn_queue/TurnQueue.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/objects/1mid.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/objects/2na2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/objects/3na22.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/objects/FloatingPlatform.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Environment" id=2]
 background_mode = 1
@@ -31,7 +34,7 @@ adjustment_saturation = 1.07
 [node name="TurnQueue" parent="." instance=ExtResource( 5 )]
 
 [node name="Player" parent="TurnQueue" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
 
 [node name="Minotaur2" parent="TurnQueue" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 6 )
@@ -45,6 +48,9 @@ shadow_enabled = true
 
 [node name="Level" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0 )
+
+[node name="2na2" parent="Level" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.21513, 3.5, 7 )
 
 [node name="1mid" parent="Level" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2, 2 )
@@ -133,8 +139,14 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 2,
 [node name="1mid29" parent="Level" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 2, 0 )
 
+[node name="3na22" parent="Level" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 2.2 )
+
 [node name="1kr" parent="Level" instance=ExtResource( 2 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.9972, 0 )
+
+[node name="FloatingPlatform" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.6, 4.01376 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -1, -6.18173e-08, 6.18173e-08, 0, 0.707107, 0.707107, -8.74228e-08, 0.707107, -0.707107, -8, 16, -12 )
@@ -143,8 +155,8 @@ fov = 30.0
 size = 20.0
 script = ExtResource( 4 )
 player_path = NodePath("../TurnQueue/Player")
-
-[node name="Tween" type="Tween" parent="Camera"]
+offset = Vector3( 0, 16, -12 )
+z_fixed = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )

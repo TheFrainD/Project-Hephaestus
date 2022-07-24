@@ -22,6 +22,7 @@ surfaces/0 = {
 }
 
 [node name="1na2w" type="StaticBody"]
+input_ray_pickable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 100, 0, 0, 0, -3.57628e-05, 100, 0, -100, -3.57628e-05, -0.276314, 0.359497, 0.399167 )

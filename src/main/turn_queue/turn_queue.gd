@@ -12,17 +12,10 @@ func _ready():
 	Events.connect("enemy_died", self, "_update_children")
 	Events.connect("player_made_turn", self, "_on_player_made_turn")
 
-func _process(delta):
-	_make_turn()
-
-
-func _make_turn():
-	if _player.active:
-		_player.make_turn()
-
 
 func _on_player_made_turn():
 	timer.start()
+	_player.active = false
 
 
 func _update_children():

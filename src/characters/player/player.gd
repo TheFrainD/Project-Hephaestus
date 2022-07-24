@@ -26,7 +26,7 @@ func _physics_process(delta):
 	_velocity = move_and_slide(_velocity, Vector3.UP)
 
 
-func make_turn():
+func _process(delta):
 	if active and is_on_floor():
 		if Input.is_action_pressed("roll_left"):
 			_roll(Vector3.RIGHT)
@@ -55,14 +55,13 @@ func _roll(direction):
 	collision = collision or space.intersect_ray(model.global_transform.origin,
 			model.global_transform.origin + direction * detection_range + Vector3.DOWN * 0.65, [self])
 	collision = collision or space.intersect_ray(model.global_transform.origin,
-			model.global_transform.origin + direction * detection_range + Vector3.DOWN * 0.4, [self])
+			model.global_transform.origin + direction * detection_range + Vector3.DOWN * 0.45, [self])
 	if collision:
 		return false
 	
 	active = false
 	
-	if direction.x != 0:
-		Events.emit_signal("player_moved", direction.x)
+	Events.emit_signal("player_moved", direction.x)
 	
 	pivot.translate(direction * 0.8)
 	model.global_translate(-direction * 0.8)
